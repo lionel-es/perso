@@ -19,7 +19,7 @@ include('../component/header.php');
                 <input type="mail" id="mail" name="mail" placeholder="Votre mail">
             </div>
             <div class="form">
-                <textarea name="projet" id="projet" cols="30" rows="30" placeholder="Messsage"></textarea>
+                <textarea name="projet" id="projet" cols="20" rows="30" placeholder="Messsage"></textarea>
             </div>
             <div class="valide">
                 <br>

@@ -1,76 +1,63 @@
 <?php
-
+include '../component/head.php';
     /******* mail *********/
     /*******verif form ********/
     define('REGEX', '/[a-zA-Z]/');
-    define('MY_MAIL', 'info@lionelesgays.com');
+define('MY_MAIL', 'info@lionelesgays.com');
+
     function verifPost(){
-        $values = array(
-            "nom" => "",
-            "prenom" => "",
-            "projet" => "",
-            "mail" => ""
-        );
-        $messageErreur = "Entrée non valide";
-        $emailErreur = "Email non valide";
-       foreach ($_POST as $key => $value) {
-            if ($key === 'nom' || $key === 'prenom') {
+        $values = array("nom" => '',
+                        "prenom" => '',
+                        "mail" => '',
+                        "projet" => '');
+        foreach ($_POST as $key => $value) {
+            if($key == 'nom' || $key == 'prenom') {
                 //verif de nom /prenom
-                if (!empty($value)
-                        && preg_match(REGEX, $value)
-                        && strlen($value)<= 25)
-                        {
-                            $values[$key] = htmlspecialchars($value);
-                } else {
-                    return $messageErreur;
+                if (
+                    !empty($value) &&
+                    preg_match(REGEX, $value) &&
+                    strlen($value) <= 25 ){
+                    $values[$key] = htmlspecialchars($value);
                 }
-                }elseif($key === 'projet'){
-                       //verif message
-                        if(!empty($value)
-                        && strlen($value)<= 500)
-                            {
-                                $values[$key] = htmlspecialchars($value);
-                       }else{
-                           return $messageErreur;
-                       }
-                }elseif($key === 'mail') {
-                       //verif mail
-                        if(!empty($value)
-                        && filter_var($value, FILTER_VALIDATE_EMAIL)
-                        &&htmlspecialchars($value))
-                            {
-                                $values[$key] = htmlspecialchars($value);
-                        }else{
-                            return $emailErreur;
-                        }
+                else return 'nom prenom pas ok';
             }
-            else return false;
+            elseif($key == 'mail'){
+                if(filter_var($value, FILTER_VALIDATE_EMAIL) &&
+                   !empty($value) &&
+                   htmlspecialchars($value)){
+                    $values[$key] = htmlspecialchars($value);
+                } else return "email non valide";
+            }
+            elseif($key == 'projet'){
+                if(!empty($value) &&
+                   strlen($value)<= 500){
+                    $values[$key] = htmlspecialchars($value);
+               }else return 'projet pas ok';
+            }
         }
         return $values;
     }
 
     function envoiMail(array $values){
-        $headers = array(
-            'Client' => $values['prenom'].' '.$values['nom'],
-            'From' => $values['mail'],
-            'Reply-To' => $values['mail'],
-            'X-Mailer' => 'PHP/'. phpversion()
-        );
+        $headers = array( 'From' => $values['mail'],
+                        'Reply-To' => $values['mail'],
+                        'X-Mailer' => 'PHP/'. phpversion() );
 
         return mail(
             MY_MAIL,
             'Message Site',
-            $values['projet'],
+            wordwrap($values['projet'], 70, "\r\n"). "\r\n" .
+            "de : " .$values['prenom']. " " . $values['nom']. "\r\n",
             $headers
         );
     }
-
             if (isset($_POST['envoyer']) && $_POST['envoyer'] === 'envoyer') {
 
                     if(envoiMail(verifPost())){
-                        echo "mail ok ";
+                        echo '<p class="pMail">Votre message à bien été envoyé. <p> ';
+                        echo '<button class="button" type="button"><a href="../page/home.php">Retour</a></button>';
                     }
-                    else echo 'Le mail n\'a pas été envoyé';
+                    else echo '<p class="pMail">Le mail n\'a pas été envoyé. <p>';
 
                 }
 

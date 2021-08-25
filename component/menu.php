@@ -22,7 +22,7 @@
     <h4>contact</h4>
         <p class="pMenu">Lionel Esgays</p>
         <a href="tel:0779802444" >07.79.80.24.44</a>
-        <a href="mailto:lionel@beard-web.fr"> lionel@beard-web.fr</a>
+        <a href="mailto:info@lionelesgays.com"> info@lionelesgays.com</a>
         <br>
   <hr>
 

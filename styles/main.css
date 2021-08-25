@@ -165,7 +165,9 @@ form{
   text-align: center;
   margin-bottom: 10rem;
 }
-
+#projet{
+  width: 200px;
+}
 .valide{
   margin-top: 2rem;
 }
@@ -175,7 +177,7 @@ form{
   width: 30em;
   border: 1px solid #E13636;
   background-color: #201929;
-  color: #3253FF;
+  color: aliceblue;
   border-radius: 10px;
   height: 25px;
 }
@@ -246,8 +248,14 @@ label a:hover{
       margin-left: 100%;
   }
 }
+/***********Mise en page Mail***********/
+.pMail{
+  text-align: center;
+}
+.button{
+  margin-left: 48%;
 
-
+}
 
 /*********** Article général ***********/
 
