@@ -10,16 +10,16 @@ include('../component/header.php');
     <div id="contactFormulaire" class="articleFormulaire">
         <form  method="post" action= "../component/mail.php">
             <div class="form">
-                <input type="text" id="nom" name="nom"placeholder="Votre nom">
+                <input type="text" id="nom" name="nom"placeholder="Votre nom" require>
             </div>
             <div class="form">
-                <input type="text" id="prenom" name="prenom" placeholder="Votre prénom">
+                <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" require>
             </div>
             <div class="message">
-                <input type="mail" id="mail" name="mail" placeholder="Votre mail">
+                <input type="mail" id="mail" name="mail" placeholder="Votre mail" require>
             </div>
             <div class="form">
-                <textarea name="projet" id="projet" cols="20" rows="30" placeholder="Messsage"></textarea>
+                <textarea name="projet" id="projet" cols="20" rows="30" placeholder="Messsage" require ></textarea>
             </div>
             <div class="valide">
                 <br>
