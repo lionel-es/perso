@@ -1,2 +1,2 @@
 #site  perso .
-#En formation, ce projet est appeler à évoluer
+#En formation, ce projet est appelé à évoluer
